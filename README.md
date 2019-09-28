@@ -1,0 +1,2 @@
+# confdaora
+Configurations using TypedDict
