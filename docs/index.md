@@ -7,7 +7,7 @@
 </p>
 
 <p align="center">
-    <em>Hello <b>confdaora</b></em>
+    <em>Configurations using python annotations</em>
 </p>
 
 ---
@@ -21,14 +21,14 @@
 
 ## Key Features
 
-- Print hello world on screen *
-
-*\* feature in development.*
+- Generate a `DictDaora` with values parsed from environment variables.
 
 
 ## Requirements
 
- - Python 3.8+
+ - Python 3.6+
+ - dictdaora
+ - jsondaora
 
 
 ## Instalation
@@ -43,6 +43,11 @@ $ pip install confdaora
 {!./src/index/index_00_basic.py!}
 ```
 
+Suposing your file calls `myconf.py`:
+```
+{!./src/index/index_00_basic_call.bash!}
+```
+
 ```
 {!./src/index/index_00_basic.output!}
 ```
@@ -51,9 +56,14 @@ $ pip install confdaora
 ## Complex example
 
 ```python
-{!./src/index/index_02_complex.py!}
+{!./src/index/index_01_complex.py!}
+```
+
+Suposing your file calls `myconf.py`:
+```
+{!./src/index/index_01_complex_call.bash!}
 ```
 
 ```
-{!./src/index/index_02_complex.output!}
+{!./src/index/index_01_complex.output!}
 ```

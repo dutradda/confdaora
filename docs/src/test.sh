@@ -10,8 +10,12 @@ for filename in ${test_files}; do
     output_tmpfile=/tmp/${filename}.output
     checksum_file=/tmp/${filename}.checksum
     checksum_file2=/tmp/${filename}.checksum2
+    call_file=/tmp/${filename}_call.bash
 
-    python3.8 ${test_path}/index/${filename}.py > ${output_tmpfile}
+    cp ${test_path}/index/${filename}_call.bash ${call_file}
+    sed -r -i -e "s%myconf%${test_path}/index/${filename}%g" ${call_file}
+
+    bash ${call_file} > ${output_tmpfile}
     md5sum ${output_file} ${output_tmpfile} > /tmp/${filename}.checksum
     test -f ${output_file2} && \
         md5sum ${output_file2} ${output_tmpfile} > /tmp/${filename}.checksum2
