@@ -76,9 +76,11 @@ from typing import List, TypedDict
 from confdaora import confdaora_env
 
 
-DBConfig = TypedDict('DBConfig', {'port': int, 'host': str})
-DBConfig.__prefix__ = 'db'
-DBConfig.port = 3306
+class DBConfig(TypedDict):
+    __prefix__ = 'db'
+    port: int = 3306
+    host: str
+
 
 KeyConfig = TypedDict('KeyConfig', {'name': str, 'values': List[int]})
 KeyConfig.__prefix__ = 'keys'
