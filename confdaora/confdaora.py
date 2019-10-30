@@ -10,6 +10,16 @@ from confdaora.exceptions import ValidationError
 
 
 def confdaora_env(conf_type: Type[Any]) -> DictDaora:
+    return from_dict(conf_type, os.environ)
+
+
+def is_user_type(type_: Type[Any]) -> bool:
+    return isinstance(type_, type) and (
+        issubclass(type_, dict) or dataclasses.is_dataclass(type_)
+    )
+
+
+def from_dict(conf_type: Type[Any], mapping: Mapping) -> DictDaora:
     conf = DictDaora()
 
     for name, type_ in conf_type.__annotations__.items():
@@ -22,7 +32,7 @@ def confdaora_env(conf_type: Type[Any]) -> DictDaora:
             key = name
 
         if is_user_type(type_):
-            conf[name] = confdaora_env(type_)
+            conf[name] = from_dict(type_, mapping)
             continue
 
         if (
@@ -65,12 +75,12 @@ def confdaora_env(conf_type: Type[Any]) -> DictDaora:
                     )
                     dyn_types[index] = type_index  # type: ignore
 
-            values = [confdaora_env(dtype) for dtype in dyn_types.values()]
+            values = [from_dict(dtype, mapping) for dtype in dyn_types.values()]
             conf[name] = values
             continue
 
         else:
-            value = os.environ.get(key.upper())
+            value = mapping.get(key.upper())
 
         if value:
             value = value.split(',')
