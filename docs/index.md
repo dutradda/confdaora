@@ -2,7 +2,7 @@
 
 <p align="center" style="margin: 3em">
   <a href="">
-    <img src="python.svg" alt="confdaora" width="300"/>
+    <img src="confdaora.svg" alt="confdaora" width="300"/>
   </a>
 </p>
 
@@ -12,9 +12,9 @@
 
 ---
 
-**Documentation**: <a href="#" target="_blank"></a>
+**Documentation**: <a href="https://dutradda.github.io/confdaora/" target="_blank">https://dutradda.github.io/confdaora/</a>
 
-**Source Code**: <a href="#" target="_blank"></a>
+**Source Code**: <a href="https://github.com/dutradda/confdaora" target="_blank">https://github.com/dutradda/confdaora</a>
 
 ---
 

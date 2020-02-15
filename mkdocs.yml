@@ -12,9 +12,6 @@ theme:
 repo_name: dutradda/confdaora
 repo_url: https://github.com/dutradda/confdaora
 edit_uri: ''
-google_analytics:
-    - ''
-    - 'auto'
 
 nav:
     - confdaora: 'index.md'
@@ -28,10 +25,8 @@ nav:
     - Changelog: changelog.md
 
 markdown_extensions:
-  - markdown.extensions.codehilite:
-      guess_lang: false
-  - markdown_include.include:
-      base_path: docs
   - admonition
-  - codehilite
-  - extra
+  - codehilite:
+      guess_lang: false
+  - toc:
+      permalink: true
