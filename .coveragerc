@@ -1,0 +1,8 @@
+[run]
+    branch = True
+    omit = test_*.py
+    source = confdaora
+    data_file = .coverage.confdaora
+
+[report]
+    show_missing = True
