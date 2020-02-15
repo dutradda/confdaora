@@ -15,18 +15,11 @@ edit_uri: ''
 
 nav:
     - confdaora: 'index.md'
-    - Features: 'features.md'
-    - Some Explanation: 'explain-concept.md'
-    - Tutorial - User Guide:
-        - Introduciton: 'tutorial/intro.md'
-    - Benchmarks: 'benchmarks.md'
-    - Help confdaora - Get Help: 'help.md'
     - Development - Contributing: 'contributing.md'
     - Changelog: changelog.md
 
 markdown_extensions:
-  - admonition
+  - markdown_include.include:
+      base_path: docs
   - codehilite:
       guess_lang: false
-  - toc:
-      permalink: true

@@ -1,5 +1,9 @@
 ## CHANGELOG
 
+### UNRELEASED
+
+ - Fix docs
+
 ### 0.1.1 - 2020-02-15
 
  - Update docs
