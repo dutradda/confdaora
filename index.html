@@ -67,31 +67,6 @@
     
     
       
-        
-<script>
-  window.ga = window.ga || function() {
-    (ga.q = ga.q || []).push(arguments)
-  }
-  ga.l = +new Date
-  /* Setup integration and send page view */
-  ga("create", "", "auto")
-  ga("set", "anonymizeIp", true)
-  ga("send", "pageview")
-  /* Register handler to log search on blur */
-  document.addEventListener("DOMContentLoaded", () => {
-    if (document.forms.search) {
-      var query = document.forms.search.query
-      query.addEventListener("blur", function() {
-        if (this.value) {
-          var path = document.location.pathname;
-          ga("send", "pageview", path + "?q=" + this.value)
-        }
-      })
-    }
-  })
-</script>
-<script async src="https://www.google-analytics.com/analytics.js"></script>
-      
     
     
   </head>
@@ -494,10 +469,10 @@
               
                 
                 
-                <h1 id="confdaora">confdaora</h1>
+                <h1 id="confdaora">confdaora<a class="headerlink" href="#confdaora" title="Permanent link">&para;</a></h1>
 <p align="center" style="margin: 3em">
   <a href="">
-    <img src="python.svg" alt="confdaora" width="300"/>
+    <img src="confdaora.svg" alt="confdaora" width="300"/>
   </a>
 </p>
 
@@ -506,97 +481,49 @@
 </p>
 
 <hr />
-<p><strong>Documentation</strong>: <a href="#" target="_blank"></a></p>
-<p><strong>Source Code</strong>: <a href="#" target="_blank"></a></p>
+<p><strong>Documentation</strong>: <a href="https://dutradda.github.io/confdaora/" target="_blank">https://dutradda.github.io/confdaora/</a></p>
+<p><strong>Source Code</strong>: <a href="https://github.com/dutradda/confdaora" target="_blank">https://github.com/dutradda/confdaora</a></p>
 <hr />
-<h2 id="key-features">Key Features</h2>
+<h2 id="key-features">Key Features<a class="headerlink" href="#key-features" title="Permanent link">&para;</a></h2>
 <ul>
 <li>Generate a <code>DictDaora</code> with values parsed from environment variables.</li>
 </ul>
-<h2 id="requirements">Requirements</h2>
+<h2 id="requirements">Requirements<a class="headerlink" href="#requirements" title="Permanent link">&para;</a></h2>
 <ul>
 <li>Python 3.6+</li>
 <li>dictdaora</li>
 <li>jsondaora</li>
 </ul>
-<h2 id="instalation">Instalation</h2>
+<h2 id="instalation">Instalation<a class="headerlink" href="#instalation" title="Permanent link">&para;</a></h2>
 <div class="codehilite"><pre><span></span><code>$ pip install confdaora
 </code></pre></div>
 
 
-<h2 id="basic-example">Basic example</h2>
-<div class="codehilite"><pre><span></span><code><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">TypedDict</span>
-
-<span class="kn">from</span> <span class="nn">confdaora</span> <span class="kn">import</span> <span class="n">confdaora_env</span>
-
-
-<span class="k">class</span> <span class="nc">AppConfig</span><span class="p">(</span><span class="n">TypedDict</span><span class="p">):</span>
-    <span class="n">port</span><span class="p">:</span> <span class="nb">int</span>
-    <span class="n">host</span><span class="p">:</span> <span class="nb">str</span>
-
-
-<span class="n">config</span> <span class="o">=</span> <span class="n">confdaora_env</span><span class="p">(</span><span class="n">AppConfig</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
+<h2 id="basic-example">Basic example<a class="headerlink" href="#basic-example" title="Permanent link">&para;</a></h2>
+<div class="codehilite"><pre><span></span><code><span class="p">{</span><span class="err">!</span><span class="o">./</span><span class="n">src</span><span class="o">/</span><span class="n">index</span><span class="o">/</span><span class="n">index_00_basic</span><span class="o">.</span><span class="n">py</span><span class="err">!</span><span class="p">}</span>
 </code></pre></div>
 
 
 <p>Suposing your file calls <code>myconf.py</code>:</p>
-<div class="codehilite"><pre><span></span><code>PORT=8080 HOST=localhost python myconf.py
+<div class="codehilite"><pre><span></span><code>{!./src/index/index_00_basic_call.bash!}
 </code></pre></div>
 
 
-<div class="codehilite"><pre><span></span><code>{&#39;port&#39;: 8080, &#39;host&#39;: &#39;localhost&#39;}
+<div class="codehilite"><pre><span></span><code>{!./src/index/index_00_basic.output!}
 </code></pre></div>
 
 
-<h2 id="complex-example">Complex example</h2>
-<div class="codehilite"><pre><span></span><code><span class="kn">from</span> <span class="nn">dataclasses</span> <span class="kn">import</span> <span class="n">dataclass</span>
-<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span>
-
-<span class="kn">from</span> <span class="nn">confdaora</span> <span class="kn">import</span> <span class="n">confdaora_env</span>
-
-
-<span class="nd">@dataclass</span>
-<span class="k">class</span> <span class="nc">DBConfig</span><span class="p">:</span>
-    <span class="n">__prefix__</span> <span class="o">=</span> <span class="s1">&#39;db&#39;</span>
-    <span class="n">host</span><span class="p">:</span> <span class="nb">str</span>
-    <span class="n">port</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">3306</span>
-
-
-<span class="nd">@dataclass</span>
-<span class="k">class</span> <span class="nc">KeyConfig</span><span class="p">:</span>
-    <span class="n">__prefix__</span> <span class="o">=</span> <span class="s1">&#39;keys&#39;</span>
-    <span class="n">name</span><span class="p">:</span> <span class="nb">str</span>
-    <span class="n">values</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span>
-
-
-<span class="nd">@dataclass</span>
-<span class="k">class</span> <span class="nc">AppConfig</span><span class="p">:</span>
-    <span class="n">db</span><span class="p">:</span> <span class="n">DBConfig</span>
-    <span class="n">keys</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">KeyConfig</span><span class="p">]</span>
-    <span class="n">host</span><span class="p">:</span> <span class="nb">str</span>
-    <span class="n">port</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">8080</span>
-
-
-<span class="n">config</span> <span class="o">=</span> <span class="n">confdaora_env</span><span class="p">(</span><span class="n">AppConfig</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
+<h2 id="complex-example">Complex example<a class="headerlink" href="#complex-example" title="Permanent link">&para;</a></h2>
+<div class="codehilite"><pre><span></span><code><span class="p">{</span><span class="err">!</span><span class="o">./</span><span class="n">src</span><span class="o">/</span><span class="n">index</span><span class="o">/</span><span class="n">index_01_complex</span><span class="o">.</span><span class="n">py</span><span class="err">!</span><span class="p">}</span>
 </code></pre></div>
 
 
 <p>Suposing your file calls <code>myconf.py</code>:</p>
-<div class="codehilite"><pre><span></span><code>HOST=localhost \
-DB_HOST=localhost \
-KEYS_0_NAME=test \
-KEYS_0_VALUES=10,20 \
-KEYS_1_NAME=test2 \
-KEYS_1_VALUES=30,40 \
-python myconf.py
+<div class="codehilite"><pre><span></span><code>{!./src/index/index_01_complex_call.bash!}
 </code></pre></div>
 
 
-<div class="codehilite"><pre><span></span><code>{&#39;db&#39;: {&#39;host&#39;: &#39;localhost&#39;, &#39;port&#39;: 3306}, &#39;keys&#39;: [{&#39;name&#39;: &#39;test&#39;, &#39;values&#39;: [10, 20]}, {&#39;name&#39;: &#39;test2&#39;, &#39;values&#39;: [30, 40]}], &#39;host&#39;: &#39;localhost&#39;, &#39;port&#39;: 8080}
+<div class="codehilite"><pre><span></span><code>{!./src/index/index_01_complex.output!}
 </code></pre></div>
                 
                   

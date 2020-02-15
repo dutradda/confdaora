@@ -67,31 +67,6 @@
     
     
       
-        
-<script>
-  window.ga = window.ga || function() {
-    (ga.q = ga.q || []).push(arguments)
-  }
-  ga.l = +new Date
-  /* Setup integration and send page view */
-  ga("create", "", "auto")
-  ga("set", "anonymizeIp", true)
-  ga("send", "pageview")
-  /* Register handler to log search on blur */
-  document.addEventListener("DOMContentLoaded", () => {
-    if (document.forms.search) {
-      var query = document.forms.search.query
-      query.addEventListener("blur", function() {
-        if (this.value) {
-          var path = document.location.pathname;
-          ga("send", "pageview", path + "?q=" + this.value)
-        }
-      })
-    }
-  })
-</script>
-<script async src="https://www.google-analytics.com/analytics.js"></script>
-      
     
     
   </head>
@@ -388,6 +363,13 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#011-2020-02-15" class="md-nav__link">
+    0.1.1 - 2020-02-15
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#010-2020-02-15" class="md-nav__link">
     0.1.0 - 2020-02-15
   </a>
@@ -437,6 +419,13 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#011-2020-02-15" class="md-nav__link">
+    0.1.1 - 2020-02-15
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#010-2020-02-15" class="md-nav__link">
     0.1.0 - 2020-02-15
   </a>
@@ -467,8 +456,12 @@
                 
                   <h1>Changelog</h1>
                 
-                <h2 id="changelog">CHANGELOG</h2>
-<h3 id="010-2020-02-15">0.1.0 - 2020-02-15</h3>
+                <h2 id="changelog">CHANGELOG<a class="headerlink" href="#changelog" title="Permanent link">&para;</a></h2>
+<h3 id="011-2020-02-15">0.1.1 - 2020-02-15<a class="headerlink" href="#011-2020-02-15" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Update docs</li>
+</ul>
+<h3 id="010-2020-02-15">0.1.0 - 2020-02-15<a class="headerlink" href="#010-2020-02-15" title="Permanent link">&para;</a></h3>
 <ul>
 <li>
 <p>Create from_dict function</p>

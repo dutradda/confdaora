@@ -67,31 +67,6 @@
     
     
       
-        
-<script>
-  window.ga = window.ga || function() {
-    (ga.q = ga.q || []).push(arguments)
-  }
-  ga.l = +new Date
-  /* Setup integration and send page view */
-  ga("create", "", "auto")
-  ga("set", "anonymizeIp", true)
-  ga("send", "pageview")
-  /* Register handler to log search on blur */
-  document.addEventListener("DOMContentLoaded", () => {
-    if (document.forms.search) {
-      var query = document.forms.search.query
-      query.addEventListener("blur", function() {
-        if (this.value) {
-          var path = document.location.pathname;
-          ga("send", "pageview", path + "?q=" + this.value)
-        }
-      })
-    }
-  })
-</script>
-<script async src="https://www.google-analytics.com/analytics.js"></script>
-      
     
     
   </head>
@@ -414,9 +389,9 @@
                 
                   <h1>Concept explained</h1>
                 
-                <h2 id="lorem-ipsum-dolor-sit-amet">Lorem ipsum dolor sit amet</h2>
+                <h2 id="lorem-ipsum-dolor-sit-amet">Lorem ipsum dolor sit amet<a class="headerlink" href="#lorem-ipsum-dolor-sit-amet" title="Permanent link">&para;</a></h2>
 <p>"Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..."</p>
-<h2 id="nullam-arcu-mauris">Nullam arcu mauris</h2>
+<h2 id="nullam-arcu-mauris">Nullam arcu mauris<a class="headerlink" href="#nullam-arcu-mauris" title="Permanent link">&para;</a></h2>
 <p>Nunc vel sapien non lectus rhoncus varius vehicula non nulla. Sed sagittis, lacus sed rutrum tincidunt, sapien libero sagittis tortor, vel pharetra magna ante nec magna. Praesent luctus lacus neque, vel mattis lectus feugiat in.</p>
                 
                   

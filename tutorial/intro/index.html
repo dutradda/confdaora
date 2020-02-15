@@ -67,31 +67,6 @@
     
     
       
-        
-<script>
-  window.ga = window.ga || function() {
-    (ga.q = ga.q || []).push(arguments)
-  }
-  ga.l = +new Date
-  /* Setup integration and send page view */
-  ga("create", "", "auto")
-  ga("set", "anonymizeIp", true)
-  ga("send", "pageview")
-  /* Register handler to log search on blur */
-  document.addEventListener("DOMContentLoaded", () => {
-    if (document.forms.search) {
-      var query = document.forms.search.query
-      query.addEventListener("blur", function() {
-        if (this.value) {
-          var path = document.location.pathname;
-          ga("send", "pageview", path + "?q=" + this.value)
-        }
-      })
-    }
-  })
-</script>
-<script async src="https://www.google-analytics.com/analytics.js"></script>
-      
     
     
   </head>
@@ -487,31 +462,19 @@
               
                 
                 
-                <h1 id="tutorial-user-guide-intro">Tutorial - User Guide - Intro</h1>
-<h2 id="getting-started">Getting Started</h2>
-<h3 id="installs">Installs</h3>
+                <h1 id="tutorial-user-guide-intro">Tutorial - User Guide - Intro<a class="headerlink" href="#tutorial-user-guide-intro" title="Permanent link">&para;</a></h1>
+<h2 id="getting-started">Getting Started<a class="headerlink" href="#getting-started" title="Permanent link">&para;</a></h2>
+<h3 id="installs">Installs<a class="headerlink" href="#installs" title="Permanent link">&para;</a></h3>
 <div class="codehilite"><pre><span></span><code>$ pip install confdaora
 </code></pre></div>
 
 
-<h3 id="starts-coding">Starts coding</h3>
-<div class="codehilite"><pre><span></span><code><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">TypedDict</span>
-
-<span class="kn">from</span> <span class="nn">confdaora</span> <span class="kn">import</span> <span class="n">confdaora_env</span>
-
-
-<span class="k">class</span> <span class="nc">AppConfig</span><span class="p">(</span><span class="n">TypedDict</span><span class="p">):</span>
-    <span class="n">port</span><span class="p">:</span> <span class="nb">int</span>
-    <span class="n">host</span><span class="p">:</span> <span class="nb">str</span>
-
-
-<span class="n">config</span> <span class="o">=</span> <span class="n">confdaora_env</span><span class="p">(</span><span class="n">AppConfig</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
+<h3 id="starts-coding">Starts coding<a class="headerlink" href="#starts-coding" title="Permanent link">&para;</a></h3>
+<div class="codehilite"><pre><span></span><code><span class="p">{</span><span class="err">!</span><span class="o">./</span><span class="n">src</span><span class="o">/</span><span class="n">index</span><span class="o">/</span><span class="n">index_00_basic</span><span class="o">.</span><span class="n">py</span><span class="err">!</span><span class="p">}</span>
 </code></pre></div>
 
 
-<div class="codehilite"><pre><span></span><code>{&#39;port&#39;: 8080, &#39;host&#39;: &#39;localhost&#39;}
+<div class="codehilite"><pre><span></span><code>{!./src/index/index_00_basic.output!}
 </code></pre></div>
                 
                   
