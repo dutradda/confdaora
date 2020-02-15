@@ -71,26 +71,32 @@ PORT=8080 HOST=localhost python myconf.py
 ## Complex example
 
 ```python
-from typing import List, TypedDict
+from dataclasses import dataclass
+from typing import List
 
 from confdaora import confdaora_env
 
 
-class DBConfig(TypedDict):
+@dataclass
+class DBConfig:
     __prefix__ = 'db'
+    host: str
     port: int = 3306
-    host: str
 
 
-KeyConfig = TypedDict('KeyConfig', {'name': str, 'values': List[int]})
-KeyConfig.__prefix__ = 'keys'
+@dataclass
+class KeyConfig:
+    __prefix__ = 'keys'
+    name: str
+    values: List[int]
 
 
-class AppConfig(TypedDict):
-    port: int = 8080
-    host: str
+@dataclass
+class AppConfig:
     db: DBConfig
     keys: List[KeyConfig]
+    host: str
+    port: int = 8080
 
 
 config = confdaora_env(AppConfig)
@@ -112,6 +118,6 @@ python myconf.py
 ```
 
 ```
-{'port': 8080, 'host': 'localhost', 'db': {'port': 3306, 'host': 'localhost'}, 'keys': [{'name': 'test', 'values': [10, 20]}, {'name': 'test2', 'values': [30, 40]}]}
+{'db': {'host': 'localhost', 'port': 3306}, 'keys': [{'name': 'test', 'values': [10, 20]}, {'name': 'test2', 'values': [30, 40]}], 'host': 'localhost', 'port': 8080}
 
 ```
