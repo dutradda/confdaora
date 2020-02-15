@@ -54,6 +54,6 @@ atomic = '1'
 exclude = '''
     \.pyi
 '''
-target-version = ['py37']
+target-version = ['py38']
 line-length = '79'
 skip-string-normalization = '1'
