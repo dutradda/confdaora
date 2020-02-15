@@ -1,7 +1,7 @@
 import dataclasses
 import os
 import re
-from typing import Any, Dict, Type, _GenericAlias  # type: ignore
+from typing import Any, Dict, Mapping, Type, _GenericAlias  # type: ignore
 
 from dictdaora import DictDaora
 from jsondaora.deserializers import deserialize_field
@@ -19,7 +19,7 @@ def is_user_type(type_: Type[Any]) -> bool:
     )
 
 
-def from_dict(conf_type: Type[Any], mapping: Mapping) -> DictDaora:
+def from_dict(conf_type: Type[Any], mapping: Mapping[str, Any]) -> DictDaora:
     conf = DictDaora()
 
     for name, type_ in conf_type.__annotations__.items():
@@ -44,7 +44,7 @@ def from_dict(conf_type: Type[Any], mapping: Mapping) -> DictDaora:
             prefix = getattr(type_, '__prefix__', '').upper()
             keys = [
                 k
-                for k in os.environ
+                for k in mapping
                 for f in type_.__annotations__.keys()
                 if k.startswith(prefix) and k.endswith(f.upper())
             ]
@@ -53,7 +53,7 @@ def from_dict(conf_type: Type[Any], mapping: Mapping) -> DictDaora:
             for k in keys:
                 match = re.match(f"{prefix}_.*(\\d+)_(.*)", k)
                 if match:
-                    value = os.environ.get(k.upper())
+                    value = mapping.get(k.upper())
                     index, attr_name = match.groups()
                     values.append((int(index), attr_name.lower(), value))
 
@@ -75,8 +75,10 @@ def from_dict(conf_type: Type[Any], mapping: Mapping) -> DictDaora:
                     )
                     dyn_types[index] = type_index  # type: ignore
 
-            values = [from_dict(dtype, mapping) for dtype in dyn_types.values()]
-            conf[name] = values
+            conf_values = [
+                from_dict(dtype, mapping) for dtype in dyn_types.values()
+            ]
+            conf[name] = conf_values
             continue
 
         else:
@@ -98,9 +100,3 @@ def from_dict(conf_type: Type[Any], mapping: Mapping) -> DictDaora:
             conf[name] = deserialize_field(name, type_, value)
 
     return conf
-
-
-def is_user_type(type_: Type[Any]) -> bool:
-    return isinstance(type_, type) and (
-        issubclass(type_, dict) or dataclasses.is_dataclass(type_)
-    )
