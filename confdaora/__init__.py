@@ -1,6 +1,6 @@
 """confdaora"""
 
-__version__ = '0.1.3'
+__version__ = '0.1.4'
 
 from confdaora.confdaora import confdaora_env
 from confdaora.exceptions import ValidationError
