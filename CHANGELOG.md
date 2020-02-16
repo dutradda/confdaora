@@ -1,6 +1,6 @@
 ## CHANGELOG
 
-### UNRELEASED
+### 0.1.4 - 2020-02-15
 
  - Update docs
 
