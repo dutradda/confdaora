@@ -1,6 +1,6 @@
 ## CHANGELOG
 
-### UNRELEASED
+### 0.1.3 - 2020-02-15
 
  - Improve docs
 
