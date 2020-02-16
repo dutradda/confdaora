@@ -6,7 +6,7 @@ theme:
     palette:
       primary: 'green'
       accent: 'grey'
-    logo: 'python-white.svg'
+    logo: 'confdaora-white.svg'
     favicon: 'favicon.png'
 
 repo_name: dutradda/confdaora
