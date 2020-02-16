@@ -12,7 +12,7 @@
 
 ---
 
-**Documentation**: <a href="https://dutradda.github.io/confdaora" target="_blank">https://dutradda.github.io/confdaora/</a>
+**Documentation**: <a href="https://dutradda.github.io/confdaora/" target="_blank">https://dutradda.github.io/confdaora</a>
 
 **Source Code**: <a href="https://github.com/dutradda/confdaora" target="_blank">https://github.com/dutradda/confdaora</a>
 
