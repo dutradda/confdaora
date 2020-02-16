@@ -2,7 +2,7 @@
 
 <p align="center" style="margin: 3em">
   <a href="">
-    <img src="confdaora.svg" alt="confdaora" width="300"/>
+    <img src="https://dutradda.github.io/confdaora/confdaora.svg" alt="confdaora" width="300"/>
   </a>
 </p>
 
