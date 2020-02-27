@@ -1,5 +1,9 @@
 ## CHANGELOG
 
+### UNRELEASED
+
+ - Fix typing when including confdaora
+
 ### 0.1.6 - 2020-02-15
 
  - Update docs
