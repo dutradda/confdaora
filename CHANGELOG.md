@@ -1,6 +1,6 @@
 ## CHANGELOG
 
-### UNRELEASED
+### 0.2.1 - 2020-02-26
 
  - Fix imports
 
