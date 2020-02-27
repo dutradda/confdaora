@@ -118,6 +118,6 @@ python myconf.py
 ```
 
 ```
-{'db': {'host': 'localhost', 'port': 3306}, 'keys': [{'name': 'test', 'values': [10, 20]}, {'name': 'test2', 'values': [30, 40]}], 'host': 'localhost', 'port': 8080}
+AppConfig(db=DBConfig(host='localhost', port=3306), keys=[KeyConfig0(name='test', values=[10, 20]), KeyConfig1(name='test2', values=[30, 40])], host='localhost', port=8080)
 
 ```

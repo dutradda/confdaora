@@ -1,5 +1,9 @@
 ## CHANGELOG
 
+### UNRELEASED
+
+ - Improve confdaora_env return type
+
 ### 0.1.7 - 2020-02-26
 
  - Fix typing when including confdaora

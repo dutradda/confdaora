@@ -3,13 +3,12 @@ import os
 import re
 from typing import Any, Dict, Mapping, Type, _GenericAlias  # type: ignore
 
-from dictdaora import DictDaora
 from jsondaora.deserializers import deserialize_field
 
 from confdaora.exceptions import ValidationError
 
 
-def confdaora_env(conf_type: Type[Any]) -> DictDaora:
+def confdaora_env(conf_type: Type[Any]) -> Any:
     return from_dict(conf_type, os.environ)
 
 
@@ -19,8 +18,8 @@ def is_user_type(type_: Type[Any]) -> bool:
     )
 
 
-def from_dict(conf_type: Type[Any], mapping: Mapping[str, Any]) -> DictDaora:
-    conf = DictDaora()
+def from_dict(conf_type: Type[Any], mapping: Mapping[str, Any]) -> Any:
+    conf_kwargs = {}
 
     for name, type_ in conf_type.__annotations__.items():
         prefix = getattr(conf_type, '__prefix__', None)
@@ -32,7 +31,7 @@ def from_dict(conf_type: Type[Any], mapping: Mapping[str, Any]) -> DictDaora:
             key = name
 
         if is_user_type(type_):
-            conf[name] = from_dict(type_, mapping)
+            conf_kwargs[name] = from_dict(type_, mapping)
             continue
 
         if (
@@ -78,7 +77,7 @@ def from_dict(conf_type: Type[Any], mapping: Mapping[str, Any]) -> DictDaora:
             conf_values = [
                 from_dict(dtype, mapping) for dtype in dyn_types.values()
             ]
-            conf[name] = conf_values
+            conf_kwargs[name] = conf_values
             continue
 
         else:
@@ -97,6 +96,6 @@ def from_dict(conf_type: Type[Any], mapping: Mapping[str, Any]) -> DictDaora:
             raise ValidationError(f'required field: name={name}')
 
         if value is not None:
-            conf[name] = deserialize_field(name, type_, value)
+            conf_kwargs[name] = deserialize_field(name, type_, value)
 
-    return conf
+    return conf_type(**conf_kwargs)

@@ -1,3 +1,4 @@
+from dataclasses import dataclass
 from typing import List, TypedDict
 
 import pytest
@@ -35,11 +36,12 @@ def test_should_set_variables_with_prefix():
 
 
 def test_should_set_variables_on_dataclass():
+    @dataclass
     class FakeConfig:
         integer: int
 
     config = {'INTEGER': '10'}
-    expected_config = {'integer': 10}
+    expected_config = FakeConfig(10)
 
     assert from_dict(FakeConfig, config) == expected_config
 
